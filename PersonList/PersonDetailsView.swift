@@ -16,7 +16,6 @@ struct PersonDetailsView: View {
                image
                     .resizable()
                     .scaledToFill()
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
                 
                 Text(name)
                     .font(.headline)
