@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// TODO: save data to disk
+// TODO: present images in content view
+// TODO: add detail view with a big image
+
 struct ContentView: View {
     @State private var showingAddUser = false
     
@@ -15,12 +19,12 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(people.peopleList) { person in
-                    
+                    Text(person.name)
                 }
             }
             .navigationTitle("PersonList")
             .sheet(isPresented: $showingAddUser) {
-                AddUserView()
+                AddUserView(people: people)
             }
             .toolbar {
                 Button {

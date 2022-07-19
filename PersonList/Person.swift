@@ -21,5 +21,5 @@ struct Person: Identifiable, Comparable {
 }
 
 class People: ObservableObject {
-    var peopleList = [Person]()
+    @Published var peopleList = [Person]()
 }

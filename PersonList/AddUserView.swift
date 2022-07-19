@@ -17,18 +17,20 @@ struct AddUserView: View {
     
     @State private var showingImagePicker = false
     
+    @StateObject var people = People()
+    
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     ZStack {
-                        RoundedRectangle(cornerSize: CGSize(width: CGFloat(10), height: CGFloat(10)))
+                        Rectangle()
                             .fill(.secondary)
-                            .frame(width: 300, height: 300)
-                        Text("Tap to select a picture")
                             .onTapGesture {
                                 showingImagePicker = true
                             }
+                        Text("Tap to select a picture")
+                            .font(.subheadline)
                         image?
                             .resizable()
                             .scaledToFit()
@@ -48,6 +50,7 @@ struct AddUserView: View {
             .toolbar {
                 Button("Save") {
                     let person = Person(id: UUID(), name: name, image: image ?? Image("testimage"))
+                    people.peopleList.append(person)
                     dismiss()
                 }
             }
