@@ -8,7 +8,6 @@
 import SwiftUI
 
 // TODO: save data to disk
-// TODO: add detail view with a big image
 
 struct ContentView: View {
     @State private var showingAddUser = false
@@ -19,7 +18,7 @@ struct ContentView: View {
             List {
                 ForEach(people.peopleList) { person in
                     NavigationLink {
-                        Text("placeholder")
+                        PersonDetailsView(name: person.name, image: person.image)
                     } label: {
                         HStack {
                             person.image

@@ -14,6 +14,7 @@
 		6E6F38862886984300C06635 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F38852886984300C06635 /* ImagePicker.swift */; };
 		6E6F388828869C7B00C06635 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F388728869C7B00C06635 /* Person.swift */; };
 		6E6F388A2886A10A00C06635 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F38892886A10A00C06635 /* AddUserView.swift */; };
+		6EC145302886DD390016CF85 /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC1452F2886DD390016CF85 /* PersonDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		6E6F38852886984300C06635 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		6E6F388728869C7B00C06635 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		6E6F38892886A10A00C06635 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		6EC1452F2886DD390016CF85 /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				6E6F3877288697FF00C06635 /* PersonListApp.swift */,
 				6E6F3879288697FF00C06635 /* ContentView.swift */,
+				6EC1452F2886DD390016CF85 /* PersonDetailsView.swift */,
 				6E6F38892886A10A00C06635 /* AddUserView.swift */,
 				6E6F388728869C7B00C06635 /* Person.swift */,
 				6E6F38852886984300C06635 /* ImagePicker.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EC145302886DD390016CF85 /* PersonDetailsView.swift in Sources */,
 				6E6F38862886984300C06635 /* ImagePicker.swift in Sources */,
 				6E6F387A288697FF00C06635 /* ContentView.swift in Sources */,
 				6E6F388A2886A10A00C06635 /* AddUserView.swift in Sources */,
