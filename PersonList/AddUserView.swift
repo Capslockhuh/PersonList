@@ -49,8 +49,15 @@ struct AddUserView: View {
             .onChange(of: inputImage) { _ in loadImage() }
             .toolbar {
                 Button("Save") {
-                    let person = Person(id: UUID(), name: name, image: image ?? Image("testimage"))
+                    guard let inputImage = inputImage else { return }
+                    guard let jpegData = inputImage.jpegData(compressionQuality: 0.8) else { return }
+                    // Assign the entered values to a person instance or use a placeholder image
+                    let person = Person(id: UUID(), name: name, jpegData: jpegData)
+                    // Append it to the array of people
                     people.peopleList.append(person)
+                    // Save all the other stuff to the disk
+                    people.save()
+                    // Dismiss the sheet
                     dismiss()
                 }
             }

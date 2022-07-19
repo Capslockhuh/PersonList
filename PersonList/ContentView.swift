@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: save data to disk
-
 struct ContentView: View {
     @State private var showingAddUser = false
     
@@ -18,10 +16,10 @@ struct ContentView: View {
             List {
                 ForEach(people.peopleList) { person in
                     NavigationLink {
-                        PersonDetailsView(name: person.name, image: person.image)
+                        PersonDetailsView(name: person.name, image: person.image ?? Image("testimage"))
                     } label: {
                         HStack {
-                            person.image
+                            person.image?
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
