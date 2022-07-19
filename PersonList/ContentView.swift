@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingImagePicker = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button("test") {
+
+        }
     }
 }
 
