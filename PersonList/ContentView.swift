@@ -30,6 +30,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: removeItems)
             }
             .navigationTitle("PersonList")
             .sheet(isPresented: $showingAddUser) {
@@ -43,6 +44,10 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    func removeItems(at offsets: IndexSet) {
+        people.peopleList.remove(atOffsets: offsets)
     }
 }
 
