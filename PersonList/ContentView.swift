@@ -8,37 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingImagePicker = false
+    @State private var showingAddUser = false
     
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
+    @StateObject var people = People()
     var body: some View {
         NavigationView {
             List {
-                VStack {
-                    Button("test") {
-                        showingImagePicker = true
-                    }
+                ForEach(people.peopleList) { person in
                     
-                    image?
-                        .resizable()
-                        .scaledToFit()
                 }
             }
             .navigationTitle("PersonList")
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage)
+            .sheet(isPresented: $showingAddUser) {
+                AddUserView()
             }
-            .onChange(of: inputImage) { _ in loadImage() }
+            .toolbar {
+                Button {
+                    showingAddUser = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
         }
-    }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else {
-            return
-        }
-        
-        image = Image(uiImage: inputImage)
     }
 }
 
