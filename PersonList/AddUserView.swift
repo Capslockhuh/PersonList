@@ -15,6 +15,8 @@ struct AddUserView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @State private var showingImagePicker = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -22,9 +24,10 @@ struct AddUserView: View {
                     ZStack {
                         RoundedRectangle(cornerSize: CGSize(width: CGFloat(10), height: CGFloat(10)))
                             .fill(.secondary)
+                            .frame(width: 300, height: 300)
                         Text("Tap to select a picture")
                             .onTapGesture {
-                                ImagePicker(image: $inputImage)
+                                showingImagePicker = true
                             }
                         image?
                             .resizable()
@@ -40,12 +43,16 @@ struct AddUserView: View {
                     Text("Name")
                 }
             }
+            .navigationTitle("Add a new person")
             .onChange(of: inputImage) { _ in loadImage() }
             .toolbar {
                 Button("Save") {
                     let person = Person(id: UUID(), name: name, image: image ?? Image("testimage"))
                     dismiss()
                 }
+            }
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(image: $inputImage)
             }
         }
     }
