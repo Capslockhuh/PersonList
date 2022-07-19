@@ -8,7 +8,6 @@
 import SwiftUI
 
 // TODO: save data to disk
-// TODO: present images in content view
 // TODO: add detail view with a big image
 
 struct ContentView: View {
@@ -19,7 +18,20 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(people.peopleList) { person in
-                    Text(person.name)
+                    NavigationLink {
+                        Text("placeholder")
+                    } label: {
+                        HStack {
+                            person.image
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 44, height: 44)
+                            
+                            Text(person.name)
+                                .font(.subheadline)
+                        }
+                    }
                 }
             }
             .navigationTitle("PersonList")
