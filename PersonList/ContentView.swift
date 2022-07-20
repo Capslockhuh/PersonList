@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     @State private var showingAddUser = false
@@ -16,7 +17,7 @@ struct ContentView: View {
             List {
                 ForEach(people.peopleList) { person in
                     NavigationLink {
-                        PersonDetailsView(name: person.name, image: person.image ?? Image("testimage"))
+                        PersonDetailsView(coordinate: CLLocationCoordinate2D(latitude: person.latitude ?? 37.33233141, longitude: person.longitude ?? -122.0312186), person: person)
                     } label: {
                         HStack {
                             person.image?

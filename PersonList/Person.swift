@@ -7,11 +7,14 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 
 struct Person: Identifiable, Comparable, Codable {
     let id: UUID
     var name: String
     let jpegData: Data
+    var latitude: Double? = nil
+    var longitude: Double? = nil
     
     var image: Image? {
         let uiImage = UIImage(data: jpegData)
@@ -20,6 +23,13 @@ struct Person: Identifiable, Comparable, Codable {
         
         return Image(uiImage: uiImage)
     }
+    
+    var coordinate: CLLocationCoordinate2D? {
+            guard let latitude = latitude else { return nil }
+            guard let longitude = longitude else { return nil }
+            
+            return .init(latitude: latitude, longitude: longitude)
+        }
 
     
     static func <(lhs: Person, rhs: Person) -> Bool {

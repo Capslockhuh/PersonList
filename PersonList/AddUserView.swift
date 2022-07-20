@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct AddUserView: View {
     @State private var image: Image?
@@ -18,6 +19,10 @@ struct AddUserView: View {
     @State private var showingImagePicker = false
     
     @StateObject var people = People()
+    
+    let locationFetcher = LocationFetcher()
+    
+    @State private var personLocation = CLLocationCoordinate2D()
     
     var body: some View {
         NavigationView {
@@ -44,6 +49,24 @@ struct AddUserView: View {
                 } header: {
                     Text("Name")
                 }
+                
+                Section {
+                    Button("Add a location") {
+                                       self.locationFetcher.start()
+                                   }
+                                   
+                                   Button("Read location") {
+                                       if let location = self.locationFetcher.lastKnownLocation {
+                                           print("Your location is \(location)")
+                                           personLocation = location
+                                       } else {
+                                           print("Failed to read location.")
+                                       }
+                                   }
+                } header: {
+                    Text("Location")
+                }
+                
             }
             .navigationTitle("Add a new person")
             .onChange(of: inputImage) { _ in loadImage() }
@@ -52,7 +75,7 @@ struct AddUserView: View {
                     guard let inputImage = inputImage else { return }
                     guard let jpegData = inputImage.jpegData(compressionQuality: 0.8) else { return }
                     // Assign the entered values to a person instance or use a placeholder image
-                    let person = Person(id: UUID(), name: name, jpegData: jpegData)
+                    let person = Person(id: UUID(), name: name, jpegData: jpegData, latitude: personLocation.latitude, longitude: personLocation.longitude)
                     // Append it to the array of people
                     people.peopleList.append(person)
                     // Save all the other stuff to the disk
