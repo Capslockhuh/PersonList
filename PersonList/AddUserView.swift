@@ -83,6 +83,7 @@ struct AddUserView: View {
                     // Dismiss the sheet
                     dismiss()
                 }
+                .disabled(isValid())
             }
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $inputImage)
@@ -96,6 +97,14 @@ struct AddUserView: View {
         }
         
         image = Image(uiImage: inputImage)
+    }
+    
+    func isValid() -> Bool {
+        if name.isEmpty || image == nil {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
