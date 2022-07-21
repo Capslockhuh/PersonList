@@ -23,7 +23,7 @@ struct PersonDetailsView: View {
                 
                 person.image ?? Image("testimage")
                     .resizable()
-                    .scaledToFill() as! Image
+                    .scaledToFit() as! Image
                 
                 Map(coordinateRegion: .constant(MKCoordinateRegion(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), span: .init(latitudeDelta: deltaSpan, longitudeDelta: deltaSpan))), annotationItems: [person]) { _ in
                         MapAnnotation(coordinate: coordinate) {
