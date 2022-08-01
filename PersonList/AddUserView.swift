@@ -34,6 +34,7 @@ struct AddUserView: View {
                             .onTapGesture {
                                 showingImagePicker = true
                             }
+                            .accessibilityAddTraits(.isButton)
                         Text("Tap to select a picture")
                             .font(.subheadline)
                         image?
